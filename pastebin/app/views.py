@@ -44,7 +44,6 @@ def paste_create(request):
 
 
 def paste_detail(request, unique_hash):
-    # Попробуем получить текст из кэша
     cache_key = f'paste_{unique_hash}'
     paste = cache.get(cache_key)
 
@@ -121,7 +120,7 @@ def first_page_login(request):
         form = EmailForm(request.POST)
         if form.is_valid(): 
             email = form.cleaned_data['email']
-            User = get_user_model()  # Получаем модель пользователя
+            User = get_user_model() 
 
             try:
                 user = User.objects.get(email=email)
