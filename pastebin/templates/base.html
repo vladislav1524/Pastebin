@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css'%}">
+    <title>{% block title %}Pastebin{% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <a class="navbar-brand font-monospace" href="/">Pastebin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="nav-link disabled">{{ request.user.email }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{% url 'account_logout' %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-link nav-link" value="Выход">
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{% url 'password_change' %}" method="get" class="d-inline">
+                            <input type="submit" class="btn btn-link nav-link" value="Сменить пароль">
+                        </form>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'first_page_login' %}">Войти</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div id="content" class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        <p>© 2024 Pastebin. Все права защищены.</p>
+    </footer>
+</body>
+</html>

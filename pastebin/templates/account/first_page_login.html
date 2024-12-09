@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<div class="auth d-flex justify-content-center align-items-center min-vh-100 ">
+    <div class="card custom_shadow" style="width: 300px;">
+        <div class="card-body text-center">
+            <h1 class="mb-4">Вход</h1>
+            <p>Вы можете войти через аккаунты в соц сетях:</p>
+            <div class="mb-4">
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a class="btn btn-primary" style="width: 200px;" href="{% url 'social:begin' 'vk-oauth2' %}">
+                            <i class="fa-brands fa-vk"></i> Войти с VK
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="btn btn-danger" style="width: 200px;" href="{% url 'social:begin' 'google-oauth2' %}">
+                            <i class="fa-brands fa-google"></i> Войти с Google
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a class="btn btn-info" style="width: 200px;" href="{% url 'social:begin' 'discord' %}">
+                            <i class="fa-brands fa-discord"></i> Войти с Discord
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <h4>или через почту</h4>
+            <p>Введите ваш email адрес:</p>
+            <div class="card card-body">
+                <form method="post" action="{% url 'first_page_login' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">Email</label>
+                        <input type="email" name="email" id="id_email" class="form-control" required>
+                        {% if form.errors %}
+                            <div class="text-danger">{{ form.errors.email|join:", " }}</div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Войти</button>
+                </form>
+            </div>
+            <br>
+            <p><a class="btn" href="{% url 'account_signup' %}">Ещё не зарегистрированы?</a></p>
+        </div>
+    </div> <br>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Размещение текста{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="text-center text-success">Размещение текста:</h1>
+        <div class="card border-success mb-3 shadow-lg">
+            <div class="card-body">
+                <form method="post" action="{% url 'app:paste_create' %}" class="mt-4">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="{{ form.content.id_for_label }}" class="form-label text-success">{{ form.content.label }}</label>
+                        <div class="input-group">
+                            {{ form.content }}
+                        </div>
+                        <small class="form-text text-muted">Введите текст, который вы хотите разместить.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.expiration_option.id_for_label }}" class="form-label text-success">{{ form.expiration_option.label }}</label>
+                        <div class="input-group">
+                            {{ form.expiration_option }}
+                        </div>
+                        <small class="form-text text-muted">Выберите, через какое время удалить текст.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.password.id_for_label }}" class="form-label text-success">{{ form.password.label }}</label>
+                        <div class="input-group">
+                            {{ form.password }}
+                        </div>
+                        <small class="form-text text-muted">Пароль нужен для защиты вашего текста.</small>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success btn-lg gradient-btn">Разместить</button>
+                    </div>
+                </form>
+                {% if not user.is_authenticated %}
+                    <small class="text-muted text-center d-block mt-3">
+                        Если вы хотите иметь возможность изменить текст, войдите в аккаунт.
+                    </small>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

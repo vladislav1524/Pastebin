@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Вас приветствует {{ current_site.name }}! </h1> <br> <br>
+
+        {% block content %}{% endblock %}
+
+    <p>Благодарим вас за использование сайта "{{ current_site.name }}"!</p> <br>
+    {{ current_site.domain }}
+</body>
+</html>

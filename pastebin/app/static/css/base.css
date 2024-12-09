@@ -1,0 +1,113 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0fff0;
+}
+
+.navbar {
+    background-color: #4CAF50;
+}
+
+.navbar-brand, .nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: #dfffd6;
+}
+
+#content {
+    flex: 1;
+}
+
+footer {
+    background-color: #2E7D32;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+.input-group input, .input-group select, .input-group textarea {
+    border: 2px solid;
+    border-image: linear-gradient(45deg, #4CAF50, #8BC34A) 1;
+    padding: 12px 15px;
+    font-size: 1rem;
+    background: #f0f9ff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
+    background: #ffffff;
+}
+
+.gradient-btn {
+    background: linear-gradient(45deg, #4CAF50, #8BC34A);
+    border: none;
+    padding: 0.5rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.gradient-btn:hover {
+    background: linear-gradient(45deg, #8BC34A, #4CAF50);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gradient-btn-outline {
+    background: transparent;
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+    padding: 0.5rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.gradient-btn-outline:hover {
+    background: #4CAF50;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #4CAF50;
+}
+
+.form-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.card {
+    border: 1px solid #4CAF50;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.paste-content {
+    background: #f0f9ff;
+    border: 2px solid;
+    border-image: linear-gradient(45deg, #4CAF50, #8BC34A) 1;
+    padding: 15px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-success {
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,20 @@
+{% extends "account/email/base_message.html" %}
+
+{% block content %}
+    <p>Вы получили это письмо, потому что вы или кто-то другой пытались зарегистрировать учетную запись, используя адрес электронной почты: <a href="mailto:{{ email }}">{{ email }}</a>.</p>
+    <p>Однако учетная запись с таким адресом электронной почты уже существует.</p>
+    <p>В случае, если вы вы забыли об этом, воспользуйтесь процедурой "Забыли пароль", чтобы восстановить свою учетную запись: <strong>перейдите по ссылке, нажав на кнопку:</strong> </p>
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: 0; background: #0382Ce; border-radius: 2px;">
+        <tr>
+            <td width="19" style="width: 19px;">&nbsp;</td>
+              <td style="height: 38px;">
+                  <a href="{{ password_reset_url }}" style="height: 38px; text-align: center; font-family: Arial, Tahoma, Geneva, sans-serif; font-size: 12px; line-height: 38px; text-decoration: none; padding: 0; display: block; border-radius: 4px;">
+                       <font face="Arial, sans-serif" color="#ffffff" style="font-size: 12px; line-height: 38px;">
+                                 <span style="font-family: Arial, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 12px; line-height: 38px; font-weight: bold; letter-spacing: 0.05em; -webkit-text-size-adjust:none;">Забыли пароль</span>
+                      </font>
+                   </a>
+          </td>
+           <td width="19" style="width: 19px;">&nbsp;</td>
+        </tr>
+      </table>
+{% endblock %}

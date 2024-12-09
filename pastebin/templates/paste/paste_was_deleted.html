@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Заметка была удалена{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="card border-success mb-3 shadow-lg">
+            <div class="card-body text-center">
+                <h1 class="text-success">{{ message }}</h1>
+                <a href="/" class="btn btn-success btn-lg gradient-btn mt-3">
+                    <i class="fas fa-home"></i> На главную
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

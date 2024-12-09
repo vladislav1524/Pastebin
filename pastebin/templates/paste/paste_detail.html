@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ paste.unique_hash }}{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="card border-success mb-3 shadow-lg">
+            <div class="card-body">
+                {% if request.user.is_authenticated and paste.author == request.user %}
+                    <div class="d-flex justify-content-end mb-3">
+                        <a href="{% url 'app:paste_edit' paste.unique_hash %}" class="btn btn-success me-2">
+                            <i class="fas fa-edit"></i> Изменить
+                        </a>
+                        <a href="{% url 'app:paste_delete' paste.unique_hash %}" class="btn btn-success">
+                            <i class="fas fa-trash-alt"></i> Удалить
+                        </a>
+                    </div>
+                {% endif %}
+                <p class="text-muted">Будет удалено через {{ paste.time_to_expire }}</p>
+                <div class="paste-content">
+                    {{ paste.content|linebreaks }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

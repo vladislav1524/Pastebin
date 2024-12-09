@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Удалить текст{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="text-center text-success">Удалить текст?</h1>
+        <div class="card border-success mb-3 shadow-lg">
+            <div class="card-body">
+                <form action="{% url 'app:paste_delete' paste.unique_hash %}" method="post" class="mt-4">
+                    {% csrf_token %}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success btn-lg gradient-btn">
+                            <i class="fas fa-trash-alt"></i> Удалить
+                        </button>
+                    </div>
+                </form>
+                <div class="text-center mt-3">
+                    <a href="{% url 'app:paste_detail' unique_hash=paste.unique_hash %}" class="btn btn-outline-success btn-lg gradient-btn-outline">
+                        <i class="fas fa-arrow-left"></i> Вернуться к тексту
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
